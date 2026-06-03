@@ -1,5 +1,7 @@
 #include<stdio.h>
 int main(){
-    printf("Hello World!\n");
+    char s[100];
+    scanf("%s",s);
+    printf("%s",s);
     return 0;
 }
