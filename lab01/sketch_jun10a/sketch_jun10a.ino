@@ -1,17 +1,40 @@
-// 定义板载LED引脚，避免使用"魔法数字"
-#define LED_PIN 4
+// 定义LED引脚，ESP32通常板载LED连接在GPIO 2
+const int ledPin = 2; 
 
 void setup() {
-  // 初始化串口通信
   Serial.begin(115200);
-  // 初始化板载LED引脚为输出模式
-  pinMode(LED_PIN, OUTPUT); 
+  pinMode(ledPin, OUTPUT);
 }
 
 void loop() {
-  Serial.println("Hello ESP32!");
-  digitalWrite(LED_PIN, HIGH);   // 点亮LED
-  delay(1000);                   // 等待1秒
-  digitalWrite(LED_PIN, LOW);    // 熄灭LED
-  delay(1000);              // 等待1秒
+  // S: 短闪3次
+  for(int i=0; i<3; i++) {
+    digitalWrite(ledPin, HIGH);
+    Serial.println("LED ON");
+    delay(200);
+    digitalWrite(ledPin, LOW);
+    Serial.println("LED OFF");
+    delay(200);
+  }
+  delay(500); // 字母间隔
+  // O: 长闪3次
+  for(int i=0; i<3; i++) {
+    digitalWrite(ledPin, HIGH);
+    Serial.println("LED ON");
+    delay(600);
+    digitalWrite(ledPin, LOW);
+    Serial.println("LED OFF");
+    delay(200);
+  }
+  delay(500);
+  // S: 短闪3次
+  for(int i=0; i<3; i++) {
+    digitalWrite(ledPin, HIGH);
+    Serial.println("LED ON");
+    delay(200);
+    digitalWrite(ledPin, LOW);
+    Serial.println("LED OFF");
+    delay(200);
+  }
+  delay(2000); // 单词间隔
 }
